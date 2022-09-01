@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+           background-color: #CCC;
+           height: 300px;
+           width: 300px;
+           display: flex;
+           flex-direction: row;
+           overflow: scroll;
+           flex-wrap: wrap;
+           /*justify-content: center;*/
+           align-items: center;
+        }
+
+        .quadrado {
+            line-height: 50px;
+            font-size: 35px;
+            background-color: yellow;
+            padding: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .quadro-menor {
+            height: 50px;
+            width: 50px;
+        }
+
+        .div-especial {
+            align-self: stretch;
+        }
+
+
+        .quadro-maior {
+            height: 75px;
+            width: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="quadrado quadro-maior">1</div>
+        <div class="quadrado quadro-menor div-especial">2</div>
+        <div class="quadrado quadro-menor">3</div>
+        <div class="quadrado quadro-maior">4</div>
+        <div class="quadrado quadro-maior">5</div>
+        <div class="quadrado quadro-menor">6</div>
+    </div>
+</body>
+</html>
