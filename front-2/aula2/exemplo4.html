@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animations</title>
     <style>
-        .div1 {
+        div {
             width: 100px;
             height: 100px;
+            left: -200px;
             background-color: blue;
             /* se for movimentar especificar o position */
             position: relative;
@@ -17,39 +18,33 @@
                2 - Tempo de duração
                3 - Repetições
             */
-            animation: DivAnimadaPercentual 5s infinite;
-        }
-
-        .div2 {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            /* se for movimentar especificar o position */
-            position: relative;
-            text-align: center;
-            /* 1 - nome da animação
-               2 - Tempo de duração
-               3 - Repetições
-            */
-            animation: DivAnimadaPercentual2 5s infinite;
-            animation-timing-function: linear;    
+            animation: DivAnimadaPercentual 10s infinite;
         }
 
         @keyframes DivAnimadaPercentual {
-            0% { 
+            0% {
                 left: 0px;
+                top: 0px;
             }
-            100% {
-                left: 200px;
-            }
-        }
 
-        @keyframes DivAnimadaPercentual2 {
-            0% { 
-                left: 0px;
-            }
-            100% {
+            25% {
                 left: 200px;
+                top: 0px;
+            }
+
+            50% {
+                left: 200px;
+                top: 200px;
+            }
+
+            75% {
+                left: 0px;
+                top: 200px;
+            }
+
+            100% {
+                left: 0px;
+                top: 0px;
             }
         }
     </style>
@@ -57,6 +52,5 @@
 <body>
     <h1>Animações</h1>
     <div class="div1">1</div>
-    <div class="div2"><p style="display: inline;">2</p></div>
 </body>
 </html>
