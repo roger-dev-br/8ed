@@ -8,28 +8,72 @@
     <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
     <title>Bootstrap Example</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function meuScript() {
+            const bsCollapse = new bootstrap.Collapse('#multiCollapseExample1', {
+                toggle: false
+            });
+            bsCollapse.toggle();
+        }
+    </script>
 </head>
+
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="#">Outra ação</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <p>
-        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both elements</button>
-      </p>
-      <div class="row">
+        <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button"
+            aria-expanded="false" aria-controls="multiCollapseExample1">Toggle first element</a>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2"
+            aria-expanded="false" aria-controls="multiCollapseExample2">Toggle second element</button>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse"
+            aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">Toggle both
+            elements</button>
+        <button onclick="meuScript()">Meu Botão</button>
+    </p>
+    <div class="row">
         <div class="col">
-          <div class="collapse multi-collapse" id="multiCollapseExample1">
-            <div class="card card-body">
-              Some placeholder content for the first collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+                    Some placeholder content for the first collapse component of this multi-collapse example. This panel
+                    is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
             </div>
-          </div>
         </div>
         <div class="col">
-          <div class="collapse multi-collapse" id="multiCollapseExample2">
-            <div class="card card-body">
-              Some placeholder content for the second collapse component of this multi-collapse example. This panel is hidden by default but revealed when the user activates the relevant trigger.
+            <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body">
+                    Some placeholder content for the second collapse component of this multi-collapse example. This
+                    panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
 </body>
+
 </html>
