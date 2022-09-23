@@ -1,5 +1,7 @@
-import { fakeData } from "./repositorio.js";
 console.log("Typescript ok");
+window.addEventListener("load", (ev) => {
+    console.log("carregado");
+});
 const inputSearch = document.getElementById("input-search");
 inputSearch.addEventListener("keyup", (ev) => {
     // sempre que o usuário apertar e soltar um tecla
@@ -10,9 +12,10 @@ inputSearch.addEventListener("keyup", (ev) => {
             inputSearch.value = "";
             break;
         case "Enter":
-            fakeData();
+            // fakeData();
             break;
         default:
             break;
     }
 });
+export {};
