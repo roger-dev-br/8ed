@@ -1,11 +1,12 @@
 import React from 'react';
 
-function PrimeiroComponent() {
+function PrimeiroComponent(props: any) {
     return (
-        <div>
-            <h1>Meu Primeiro Component</h1>
+        <>
+            <h1>{ props.titulo }</h1>
+            <h4>{ props.subtitulo }</h4>
             <hr />
-        </div>
+        </>
     )
 }
 
