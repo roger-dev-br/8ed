@@ -7,3 +7,9 @@ npx create-react-app primeiro-app --template typescript
 
 -- Atualizar o NPM
 npm install -g npm@latest
+
+
+<ul>
+    <li>Item 1</i>
+</ul>
+
