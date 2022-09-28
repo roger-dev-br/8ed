@@ -1,15 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PrimeiroComponent from './PrimeiroComponent';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        
+        <PrimeiroComponent></PrimeiroComponent>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
+        <label htmlFor="nome">Nome</label>
         <a
           className="App-link"
           href="https://reactjs.org"
