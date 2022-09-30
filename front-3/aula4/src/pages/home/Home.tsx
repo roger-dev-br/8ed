@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
+import Header from "../../components/header/Header";
 
 const Home: React.FC = () => {
   return (
     <>
-      <h1>Aula 4</h1>
-      <hr />
+      <Header titulo="Aula 4" />
       <Link to={"/recados"}>Página de recados</Link>
     </>
   );
