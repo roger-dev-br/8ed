@@ -8,6 +8,7 @@ const AppRoutes: React.FC = () => {
             <Routes>
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/recados" element={<Recado />}></Route>
+                <Route path="*" element={<h1>Não Encontrado</h1>}></Route>
             </Routes>
         </BrowserRouter>
     );
