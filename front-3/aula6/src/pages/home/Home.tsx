@@ -12,7 +12,7 @@ const Home: React.FC = () => {
         <Grid container spacing={2}>
           <MeuCard
             imagem="https://s2.glbimg.com/qsSdnDobDGqkzbF_NcOZHbrczzY=/e.glbimg.com/og/ed/f/original/2020/04/06/tiger-2791980_1920.jpg"
-            titulo="Onça"
+            titulo="Tigre"
             texto="O que se sabe até agora sobre a infecção por Covid-19 em animais"
             acao={() => {
                 alert('acao 1');
