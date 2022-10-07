@@ -1,11 +1,14 @@
+import { CssBaseline } from '@mui/material';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Home from './pages/home/Home';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <h1>Aula 6</h1>
+    <CssBaseline />
+    <Home />
   </React.StrictMode>
 );
