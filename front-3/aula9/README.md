@@ -146,3 +146,22 @@ export default function PageUseEffect() {
         </>
     );    
 }
+
+
+
+import { MouseEventHandler, useCallback } from "react";
+
+const Home = ({ content, depA, depB }: any) => {
+  const handleClick = useCallback<MouseEventHandler<HTMLElement>>(
+    (event) => {
+      console.log(content);
+      console.log(depA);
+      console.log(depB);
+    },
+    [depA, depB, content]
+  );
+
+  return <div onClick={handleClick}>{content}</div>;
+};
+
+export default Home;
