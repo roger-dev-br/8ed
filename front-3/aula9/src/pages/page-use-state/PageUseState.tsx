@@ -1,17 +1,23 @@
 import Titulo from "../../components/titulo/Titulo";
 import TopBar from "../../components/top-bar/TopBar";
 import { Box, Button, Container, Divider, Typography } from "@mui/material";
+import { useState } from "react";
 
 const PageUseState: React.FC = () => {
-  let contador: number = 0;
+  // let contador: number = 0;
+  // Aqui a gente desestrutura o useState que é uma lista
+    // 1 - posiçao é o valor do estado 
+    // 2 - é a função que altera o valor do estado
+  const [ contador, setContador ] = useState<number>(0);
 
   function incrementarContador(): void {
-    contador++;    
+    // contador++;
+    setContador(contador + 1);
     console.log(contador);
   }
 
   function zerarContador(): void {
-    contador = 0;
+    setContador(0);
     console.log(contador);
   }
 
@@ -19,7 +25,7 @@ const PageUseState: React.FC = () => {
     <>
       <TopBar />
       <Container maxWidth="md">
-        <Titulo titulo="Use State" />
+        <Titulo titulo="" />
         <Divider />
         <Box sx={{ flexGrow: 1, mt: 2, mb: 2 }}>
           <Typography variant="h3" component="h3">
