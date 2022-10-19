@@ -9,7 +9,9 @@ const PageUseState: React.FC = () => {
   // 1 - posiçao é o valor do estado
   // 2 - é a função que altera o valor do estado
   const [contador, setContador] = useState<number>(0);
-  const open = false;
+
+  // Estado que vai controlar o SNACKBAR
+  const [open, setOpen ] = useState<boolean>(false);
 
   function incrementarContador(): void {
     // contador++;
@@ -19,8 +21,13 @@ const PageUseState: React.FC = () => {
 
   function zerarContador(): void {
     setContador(0);
+    setOpen(true);
     console.log(contador);
   }
+
+  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+    setOpen(false);
+  };
 
   return (
     <>
@@ -43,8 +50,12 @@ const PageUseState: React.FC = () => {
           </Box>
         </Box>
       </Container>
+
+      <input type="text" value={contador} />
+
       <Snackbar open={open} 
         autoHideDuration={6000} 
+        onClose={handleClose}
         message="Note archived" />
     </>
   );
