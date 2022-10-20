@@ -10,19 +10,29 @@ const PageUseState: React.FC = () => {
   // 2 - é a função que altera o valor do estado
   const [contador, setContador] = useState<number>(0);
 
+  const [ valorDaAgua, alteraValorAgua] = useState<number>(5);
+
   // Estado que vai controlar o SNACKBAR
   const [open, setOpen ] = useState<boolean>(false);
 
+  const [mensagem, setMensagem] = useState<string>("");
+
   function incrementarContador(): void {
     // contador++;
+    if ((contador + 1) % 5 === 0) {
+      setMensagem("Contador multiplo de 5");
+      setOpen(true);
+    }
     setContador(contador + 1);
     console.log(contador);
   }
 
   function zerarContador(): void {
+    setMensagem("Contador Zerado");
     setContador(0);
     setOpen(true);
     console.log(contador);
+    alteraValorAgua(100);
   }
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -33,11 +43,13 @@ const PageUseState: React.FC = () => {
     <>
       <TopBar />
       <Container maxWidth="md">
-        <Titulo titulo="" />
+        <Titulo titulo="Use State" />
         <Divider />
         <Box sx={{ flexGrow: 1, mt: 2, mb: 2 }}>
           <Typography variant="h3" component="h3">
-            Valor Atual: {contador}
+            Valor Atual: {contador} <br>
+            </br>
+            Valor Agua: {valorDaAgua}
           </Typography>
 
           <Box sx={{ flexGrow: 1, mt: 2, mb: 2 }}>
@@ -51,12 +63,14 @@ const PageUseState: React.FC = () => {
         </Box>
       </Container>
 
-      <input type="text" value={contador} />
+      <input type="text" 
+        value={contador} 
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setContador(Number(e.target.value))} />
 
       <Snackbar open={open} 
         autoHideDuration={6000} 
         onClose={handleClose}
-        message="Note archived" />
+        message={mensagem} />
     </>
   );
 };
