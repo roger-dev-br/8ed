@@ -15,6 +15,8 @@ const PageUseMemo: React.FC = () => {
 
         return numero1 ** numero2;
     }
+
+    let soma = numero3 + numero4;
     
     return (
         <>
@@ -76,7 +78,7 @@ const PageUseMemo: React.FC = () => {
                   />
                 </Grid>
                 <Grid item md={3}>
-                  <TextField fullWidth id="outlined-basic" label="Resultado" variant="outlined" />
+                  <TextField fullWidth id="outlined-basic" label="Resultado" variant="outlined" value={soma} />
                 </Grid>
               </Grid>
             </Box>
