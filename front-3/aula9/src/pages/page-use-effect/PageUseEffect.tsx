@@ -6,6 +6,7 @@ import TopBar from "../../components/top-bar/TopBar";
 
 const PageUseEffect: React.FC = () => {
   const [imagem, setImagem] = useState<string>("");
+  const [nota, setNota] = useState<number>(10);
 
   const baixarImagem = () => {
     fetch("https://dog.ceo/api/breeds/image/random")
@@ -16,9 +17,19 @@ const PageUseEffect: React.FC = () => {
     });
   }
 
+  const avaliaAluno = () => {
+    ///
+  }
+
   useEffect(() => {
     baixarImagem();
   }, []); // as dependencias
+
+  useEffect(() => {
+    console.log("nota alterada");
+
+    avaliaAluno();
+  }, [nota]);
 
   return (
     <>
@@ -30,6 +41,8 @@ const PageUseEffect: React.FC = () => {
           <Avatar alt="Foto" src={imagem} sx={{ width: 400, height: 400 }} />
         </Box>
         <Button variant="outlined" onClick={baixarImagem}>Trocar imagem</Button>
+
+        <input type="text" value={nota} onChange={(e) => setNota(Number(e.target.value)) } />
       </Container>
     </>
   );
