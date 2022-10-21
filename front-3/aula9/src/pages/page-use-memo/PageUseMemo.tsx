@@ -8,6 +8,13 @@ const PageUseMemo: React.FC = () => {
     const [numero2, setNumero2] = useState<number>(0);
     const [numero3, setNumero3] = useState<number>(0);
     const [numero4, setNumero4] = useState<number>(0);
+
+    const potencia = () => {
+        const futuro = Date.now() + 1000;
+        while (Date.now() < futuro) {}
+
+        return numero1 ** numero2;
+    }
     
     return (
         <>
@@ -41,7 +48,7 @@ const PageUseMemo: React.FC = () => {
                   />
                 </Grid>
                 <Grid item md={3}>
-                  <TextField fullWidth id="outlined-basic" label="Resultado" variant="outlined" />
+                  <TextField fullWidth id="outlined-basic" label="Resultado" variant="outlined" value={potencia()} />
                 </Grid>
               </Grid>
               <Grid container sx={{ mt: 2, mb: 2 }}>
