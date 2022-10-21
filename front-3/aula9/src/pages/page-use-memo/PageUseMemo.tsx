@@ -16,6 +16,8 @@ const PageUseMemo: React.FC = () => {
         return numero1 ** numero2;
     }
 
+    console.log("Componente inicializado");
+
     let soma = numero3 + numero4;
     
     return (
