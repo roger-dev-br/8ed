@@ -1,14 +1,24 @@
-import { Avatar, Box, Divider } from "@mui/material";
+import { Avatar, Box, Button, Divider } from "@mui/material";
 import { Container } from "@mui/system";
+import { useEffect, useState } from "react";
 import Titulo from "../../components/titulo/Titulo";
 import TopBar from "../../components/top-bar/TopBar";
 
 const PageUseEffect: React.FC = () => {
-  fetch("https://dog.ceo/api/breeds/image/random")
+  const [imagem, setImagem] = useState<string>("");
+
+  const baixarImagem = () => {
+    fetch("https://dog.ceo/api/breeds/image/random")
     .then((resp) => resp.json())
     .then((json) => {
-      console.log(json);
+      setImagem(json.message);
+      console.log("recebi a mensagem");
     });
+  }
+
+  useEffect(() => {
+    baixarImagem();
+  }, []); // as dependencias
 
   return (
     <>
@@ -17,8 +27,9 @@ const PageUseEffect: React.FC = () => {
         <Titulo titulo="Use Effect" />
         <Divider />
         <Box sx={{ flexGrow: 1, mt: 2, mb: 2, textAlign: "center" }}>
-          <Avatar alt="Foto" src="" sx={{ width: 400, height: 400 }} />
+          <Avatar alt="Foto" src={imagem} sx={{ width: 400, height: 400 }} />
         </Box>
+        <Button variant="outlined" onClick={baixarImagem}>Trocar imagem</Button>
       </Container>
     </>
   );
