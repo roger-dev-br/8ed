@@ -1,6 +1,7 @@
 import { Avatar, Box, Button, Divider } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
+import { useFetcher } from "react-router-dom";
 import Titulo from "../../components/titulo/Titulo";
 import TopBar from "../../components/top-bar/TopBar";
 
@@ -10,21 +11,24 @@ const PageUseEffect: React.FC = () => {
 
   const baixarImagem = () => {
     fetch("https://dog.ceo/api/breeds/image/random")
-    .then((resp) => resp.json())
-    .then((json) => {
-      setImagem(json.message);
-      console.log("recebi a mensagem");
-    });
+      .then((resp) => resp.json())
+      .then((json) => {
+        setImagem(json.message);
+        console.log("recebi a mensagem");
+      });
   }
 
   const avaliaAluno = () => {
     ///
   }
 
+  // Quando a pagina for carregada busca a imagem
   useEffect(() => {
     baixarImagem();
   }, []); // as dependencias
 
+  // Podemos criar vários useEffect, um para cada dependencia ou grupo
+  // de dependencias
   useEffect(() => {
     console.log("nota alterada");
 
