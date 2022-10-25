@@ -1,13 +1,14 @@
 import { Avatar, Box, Button, Divider } from "@mui/material";
 import { Container } from "@mui/system";
 import { useEffect, useState } from "react";
-import { useFetcher } from "react-router-dom";
 import Titulo from "../../components/titulo/Titulo";
 import TopBar from "../../components/top-bar/TopBar";
 
 const PageUseEffect: React.FC = () => {
   const [imagem, setImagem] = useState<string>("");
   const [nota, setNota] = useState<number>(10);
+
+  const [lista, setLista] = useState<number[]>([]);
 
   const baixarImagem = () => {
     fetch("https://dog.ceo/api/breeds/image/random")
@@ -16,15 +17,22 @@ const PageUseEffect: React.FC = () => {
         setImagem(json.message);
         console.log("recebi a mensagem");
       });
+  };
+
+  const buscarNumeros = () => {
+    const salvo = localStorage.getItem("contador");
+    setLista(JSON.parse(salvo ?? "[]"));
   }
 
   const avaliaAluno = () => {
     ///
-  }
+  };
 
   // Quando a pagina for carregada busca a imagem
   useEffect(() => {
     baixarImagem();
+
+    buscarNumeros();
   }, []); // as dependencias
 
   // Podemos criar vários useEffect, um para cada dependencia ou grupo
@@ -44,9 +52,18 @@ const PageUseEffect: React.FC = () => {
         <Box sx={{ flexGrow: 1, mt: 2, mb: 2, textAlign: "center" }}>
           <Avatar alt="Foto" src={imagem} sx={{ width: 400, height: 400 }} />
         </Box>
-        <Button variant="outlined" onClick={baixarImagem}>Trocar imagem</Button>
+        <Button variant="outlined" onClick={baixarImagem}>
+          Trocar imagem
+        </Button>
 
-        <input type="text" value={nota} onChange={(e) => setNota(Number(e.target.value)) } />
+        <ul>
+          {lista.map((item) =>
+            <li>{ item }</li>
+          )
+          }
+        </ul>
+
+        <input type="text" value={nota} onChange={(e) => setNota(Number(e.target.value))} />
       </Container>
     </>
   );

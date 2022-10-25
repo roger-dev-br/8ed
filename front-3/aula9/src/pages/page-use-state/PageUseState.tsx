@@ -8,7 +8,10 @@ const PageUseState: React.FC = () => {
   // Aqui a gente desestrutura o useState que é uma lista
   // 1 - posiçao é o valor do estado
   // 2 - é a função que altera o valor do estado
+  // let inicio = 10;
   const [contador, setContador] = useState<number>(0);
+
+  const [lista, setLista] = useState<number[]>([]);
 
   const [ valorDaAgua, alteraValorAgua] = useState<number>(5);
 
@@ -33,6 +36,19 @@ const PageUseState: React.FC = () => {
     setOpen(true);
     console.log(contador);
     alteraValorAgua(100);
+  }
+
+  function salvar() {
+    if (contador < 0) {
+      alert("Valor deve ser maior que 0");
+      return;
+    }
+    lista.push(contador);
+    /*setLista([
+      ...lista,
+      contador,
+    ]);*/
+    localStorage.setItem("contador", JSON.stringify(lista));
   }
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -64,8 +80,12 @@ const PageUseState: React.FC = () => {
       </Container>
 
       <input type="text" 
-        value={contador} 
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setContador(Number(e.target.value))} />
+        value={contador}
+        onChange={(e) => setContador(Number(e.target.value))}
+      />
+
+
+      <button onClick={salvar}>Salvar</button>
 
       <Snackbar open={open} 
         autoHideDuration={6000} 
