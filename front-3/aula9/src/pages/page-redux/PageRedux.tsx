@@ -1,8 +1,10 @@
 import { Box, Button, Container, Divider } from "@mui/material";
+import InputUsuario from "../../components/input-usuario/InputUsuario";
 import Titulo from "../../components/titulo/Titulo";
 import TopBar from "../../components/top-bar/TopBar";
 import { getContador, incrementar, diminuir } from "../../store/modules/contador/ContadorSlice";
 import { useAppDispatch, useAppSelector } from "../../store/modules/hooks";
+import { alterarNomeUsuario } from "../../store/modules/usuario/UsuarioSlice";
 import "./PageRedux.css";
 
 const PageRedux: React.FC = () => {
@@ -22,6 +24,10 @@ const PageRedux: React.FC = () => {
           <span className="value"> {contador} </span>
           <Button variant="outlined" 
             onClick={() => dispatch(diminuir(1))}>-</Button>
+        </Box>
+
+        <Box sx={{ mt: 4 }}>
+          <InputUsuario onChange={(e) => dispatch(alterarNomeUsuario(e.target.value))}></InputUsuario>
         </Box>
       </Container>
     </>

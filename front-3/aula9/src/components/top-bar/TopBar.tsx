@@ -8,9 +8,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { getContador, zerar } from '../../store/modules/contador/ContadorSlice';
 import { useAppDispatch, useAppSelector } from '../../store/modules/hooks';
+import { selectorUsuario } from '../../store/modules/usuario/UsuarioSlice';
 
 const TopBar: React.FC = () => {
   const count = useAppSelector(getContador);
+  const nomeUsuario = useAppSelector(selectorUsuario);
   const dispatch = useAppDispatch();
 
   return (
@@ -27,7 +29,7 @@ const TopBar: React.FC = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            React Hooks
+            { nomeUsuario }
           </Typography>
           <Button color="inherit"
           onClick={() => dispatch(zerar())}>{ count }</Button>

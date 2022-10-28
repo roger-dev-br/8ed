@@ -12,7 +12,13 @@ const slice = createSlice({
   reducers: {
     // -- lista das ações
     incrementar: (state, parametro: PayloadAction<number>) => (state += parametro.payload),
-    diminuir: (state, parametro: PayloadAction<number>) => (state -= parametro.payload),
+    diminuir: (state, parametro: PayloadAction<number>) => {
+      if (state - parametro.payload <= 0) {
+        return 0;
+      } else {
+        return state - parametro.payload;
+      }
+    },
     zerar: (state) => (state = 0),
   },
 });
