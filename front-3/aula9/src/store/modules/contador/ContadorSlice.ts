@@ -12,11 +12,12 @@ const slice = createSlice({
   reducers: {
     // -- lista das ações
     incrementar: (state, parametro: PayloadAction<number>) => (state += parametro.payload),
+    diminuir: (state, parametro: PayloadAction<number>) => (state -= parametro.payload),
   },
 });
 
 // exportei ações para alterar o estado
-export const { incrementar } = slice.actions;
+export const { incrementar, diminuir } = slice.actions;
 
 // exportar a leitura do estado
 export const getContador = (state: RootState) => state.contador;

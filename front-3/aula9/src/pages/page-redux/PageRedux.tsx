@@ -1,7 +1,7 @@
 import { Box, Button, Container, Divider } from "@mui/material";
 import Titulo from "../../components/titulo/Titulo";
 import TopBar from "../../components/top-bar/TopBar";
-import { getContador, incrementar } from "../../store/modules/contador/ContadorSlice";
+import { getContador, incrementar, diminuir } from "../../store/modules/contador/ContadorSlice";
 import { useAppDispatch, useAppSelector } from "../../store/modules/hooks";
 import "./PageRedux.css";
 
@@ -20,7 +20,8 @@ const PageRedux: React.FC = () => {
           onClick={() => dispatch(incrementar(1))}
           >+</Button>
           <span className="value"> {contador} </span>
-          <Button variant="outlined">-</Button>
+          <Button variant="outlined" 
+            onClick={() => dispatch(diminuir(1))}>-</Button>
         </Box>
       </Container>
     </>

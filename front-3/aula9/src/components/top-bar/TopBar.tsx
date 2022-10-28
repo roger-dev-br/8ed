@@ -6,8 +6,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { getContador } from '../../store/modules/contador/ContadorSlice';
+import { useAppSelector } from '../../store/modules/hooks';
 
 const TopBar: React.FC = () => {
+  const count = useAppSelector(getContador);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -24,7 +28,7 @@ const TopBar: React.FC = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             React Hooks
           </Typography>
-          <Button color="inherit">Ajuda</Button>
+          <Button color="inherit">{ count }</Button>
         </Toolbar>
       </AppBar>
     </Box>
