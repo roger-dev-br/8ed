@@ -13,11 +13,12 @@ const slice = createSlice({
     // -- lista das ações
     incrementar: (state, parametro: PayloadAction<number>) => (state += parametro.payload),
     diminuir: (state, parametro: PayloadAction<number>) => (state -= parametro.payload),
+    zerar: (state) => (state = 0),
   },
 });
 
 // exportei ações para alterar o estado
-export const { incrementar, diminuir } = slice.actions;
+export const { incrementar, diminuir, zerar } = slice.actions;
 
 // exportar a leitura do estado
 export const getContador = (state: RootState) => state.contador;
