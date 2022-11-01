@@ -28,6 +28,7 @@ export const { incrementar, diminuir, zerar } = slice.actions;
 
 // exportar a leitura do estado
 export const getContador = (state: RootState) => state.contador;
+export const getContadorDobro = (state: RootState) => state.contador * 2;
 
 // Exporta o reducer para usar no STORE
 export default slice.reducer;

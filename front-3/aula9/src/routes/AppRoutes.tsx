@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import PageCompras from "../pages/page-compras/PageCompras";
 import PageRedux from "../pages/page-redux/PageRedux";
 import PageUseEffect from "../pages/page-use-effect/PageUseEffect";
 import PageUseMemo from "../pages/page-use-memo/PageUseMemo";
@@ -12,6 +13,7 @@ const AppRoutes: React.FC = () => {
                 <Route path="/use-effect" element={<PageUseEffect />}></Route>
                 <Route path="/use-memo" element={<PageUseMemo />}></Route>
                 <Route path="/redux" element={<PageRedux />}></Route>
+                <Route path="/compras" element={<PageCompras />}></Route>
                 <Route path="*" element={<h1>Não Encontrado</h1>}></Route>
             </Routes>
         </BrowserRouter>
