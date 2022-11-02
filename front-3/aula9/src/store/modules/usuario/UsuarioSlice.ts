@@ -19,7 +19,10 @@ const slice = createSlice({
     // alterarNomeUsuario: (state, parametro: PayloadAction<string>) => null,
     novoUsuario: (state, parametro: PayloadAction<Usuario>) => {
       // adicionar o novo usuario no estado atual
-      state.push(parametro.payload);
+      const index = state.findIndex((f) => f.nome === parametro.payload.nome);
+      if (index === -1) {
+        state.push(parametro.payload);
+      }
       // state = [...state, parametro.payload];
     },
     removerUsuario: (state, parametro: PayloadAction<Usuario>) => {
