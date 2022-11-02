@@ -4,7 +4,8 @@ import TopBar from "../../components/top-bar/TopBar";
 import { adicionarItem, selectAll } from "../../store/modules/compras/ComprasSlice";
 import { useAppDispatch, useAppSelector } from "../../store/modules/hooks";
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
+import CompraItem from "../../components/compra-item/CompraItem";
 
 const PageCompras: React.FC = () => {
   const compras = useAppSelector(selectAll);
@@ -13,12 +14,14 @@ const PageCompras: React.FC = () => {
 
   const handleAdd = () => {
     const descricao = prompt("Informe a Descrição");
-    dispatch(adicionarItem({
+    dispatch(
+      adicionarItem({
         uid: uuidv4(),
         descricao: descricao ?? "sem descricao",
         ok: false,
-    }));
-  }
+      })
+    );
+  };
 
   return (
     <>
@@ -33,10 +36,9 @@ const PageCompras: React.FC = () => {
           </Button>
         </Box>
 
-
         <Box sx={{ mt: 4 }}>
           {compras.map((item) => (
-            <h1 key={item.uid}>{item.descricao} </h1>
+            <CompraItem uid={item.uid} descricao={item.descricao} ok={item.ok} key={item.uid}></CompraItem>
           ))}
         </Box>
       </Container>

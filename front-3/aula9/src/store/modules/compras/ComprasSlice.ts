@@ -20,9 +20,10 @@ const slice = createSlice({
   initialState: adapter.getInitialState(),
   reducers: {
     adicionarItem: adapter.addOne,
+    atualizarItem: adapter.updateOne,
   },
 });
 
-export const { adicionarItem } = slice.actions;
+export const { adicionarItem, atualizarItem } = slice.actions;
 
 export default slice.reducer;
