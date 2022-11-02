@@ -21,9 +21,10 @@ const slice = createSlice({
   reducers: {
     adicionarItem: adapter.addOne,
     atualizarItem: adapter.updateOne,
+    removerItem: adapter.removeOne,
   },
 });
 
-export const { adicionarItem, atualizarItem } = slice.actions;
+export const { adicionarItem, atualizarItem, removerItem } = slice.actions;
 
 export default slice.reducer;
