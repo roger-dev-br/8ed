@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from "../../store/modules/hooks";
 import "./PageRedux.css";
 
 const PageRedux: React.FC = () => {
+  // Atribui a constante contador o valor do Estado Global
   const contador = useAppSelector(getContador);
   const dispatch = useAppDispatch();
 

@@ -11,7 +11,7 @@ const adapter = createEntityAdapter<Compra>({
   selectId: (compra) => compra.uid,
 });
 
-export const { selectAll } = adapter.getSelectors((state: any) => state.compras);
+export const { selectAll, selectById } = adapter.getSelectors((state: any) => state.compras);
 
 const slice = createSlice({
   // nome do slice

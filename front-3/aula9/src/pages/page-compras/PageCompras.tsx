@@ -9,8 +9,10 @@ import CompraItem from "../../components/compra-item/CompraItem";
 import { useEffect, useState } from "react";
 
 const PageCompras: React.FC = () => {
+  // Criamos este estado local apenas para mostrar como ordenar localmente a lista
   const [ comprasLocais, setComprasLocais ] = useState<Compra[]>([]);
 
+  // Busca a infomrmação do estado atual do Redux
   const compras = useAppSelector(selectAll);
 
   const dispatch = useAppDispatch();
