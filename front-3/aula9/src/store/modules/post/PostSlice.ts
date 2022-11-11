@@ -16,7 +16,7 @@ interface PostState {
 
 export const getPosts = createAsyncThunk("posts/getAll", async (data, thunkApi) => {
   try {
-    const response = await axios.get<Post[]>("https://jsonplaceholder.typicode.com/posts?_limit=100");
+    const response = await axios.get<Post[]>("https://jsonplaceholder.typicode.com/posts?_limit=10");
     return response.data;
   } catch (error: any) {
     console.log(error);
@@ -24,6 +24,26 @@ export const getPosts = createAsyncThunk("posts/getAll", async (data, thunkApi) 
     return thunkApi.rejectWithValue(message);
   }
 });
+
+export const postar = async () => {
+  const response = await axios.post("https://jsonplaceholder.typicode.com/posts", {
+    userId: 1,
+    title: "Growdev",
+    body: "Aula de React",
+  });
+
+  console.log(response.data);
+};
+
+export const atualizar = async () => {
+  const response = await axios.put("https://jsonplaceholder.typicode.com/posts/1", {
+    userId: 1,
+    title: "Growdev 222",
+    body: "Aula de React 22",
+  });
+
+  console.log(response.data);
+};
 
 const initialState = {
   loading: false,

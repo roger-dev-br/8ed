@@ -4,6 +4,8 @@ import express, { Express, Request, Response } from "express";
 // Crio uma instancia do Servidor express
 const app: Express = express();
 
+app.use(cors());
+
 // Iniciar o servidor e escutar em uma porta
 app.listen(3300, () => {
   console.log("🤘 servidor iniciado");
@@ -106,3 +108,6 @@ app.put("/produtos/:id", (req: Request, res: Response) => {
   // devolve para o cliente
   res.json(selecionado);
 });
+function cors(): any {
+  throw new Error("Function not implemented.");
+}
