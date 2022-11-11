@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "./rootReducer";
 import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
+import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER, persistReducer, persistStore } from "redux-persist";
 
 const persistConfig = {
   key: "aula9",
   storage,
+  version: 1,
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -13,6 +14,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   // Trocou o rootReducer, pelo persistedReducer
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 // Exportando o Roostate para poder ler de fora

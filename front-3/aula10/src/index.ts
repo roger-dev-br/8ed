@@ -26,6 +26,11 @@ const lista: Produto[] = [];
 // Habilitar o backend para receber JSON na requisiçao
 app.use(express.json());
 
+// GET - Obter informações
+// POST - Enviar informaçoes
+// PUT - Enviar informações para editar uma informação já existente
+// DELETE - Exclui uma ou mais informação
+
 // Criar uma rota para inserir um novo produto
 app.post("/produtos", (req: Request, res: Response) => {
   // Desestruturo a requisição para pegar o corpo
