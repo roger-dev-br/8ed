@@ -1,13 +1,15 @@
 import { Box, Button, Container, Divider } from "@mui/material";
 import Titulo from "../../components/titulo/Titulo";
 import TopBar from "../../components/top-bar/TopBar";
-import { useAppDispatch } from "../../store/modules/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/modules/hooks";
 
 import { useEffect } from "react";
 import { getPosts } from "../../store/modules/post/PostSlice";
 
 const PagePost: React.FC = () => {
   const dispatch = useAppDispatch();
+
+  const { loading, error, data } = useAppSelector((state) => state.posts);
 
   useEffect(() => {
     dispatch(getPosts());
@@ -21,17 +23,27 @@ const PagePost: React.FC = () => {
         <Divider />
 
         <Box sx={{ mt: 4 }}>
-          <Button variant="outlined">Adicionar</Button>
+          <Button variant="outlined" onClick={() => dispatch(getPosts())}>
+            Recarregar
+          </Button>
         </Box>
-        
+
         <Box sx={{ mt: 4 }}>
+            { loading && (
+                <div>Carregando</div>
+            )}
         </Box>
 
         <Box sx={{ mt: 4 }}>
+            {error && (
+                <div>{ error }</div>
+            )}
         </Box>
 
-
         <Box sx={{ mt: 4 }}>
+            {!loading && data && data.map((post)=> (
+                <div key={post.id}>{ post.title }</div>
+            ))}
         </Box>
       </Container>
     </>

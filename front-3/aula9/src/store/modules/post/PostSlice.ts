@@ -19,6 +19,7 @@ export const getPosts = createAsyncThunk("posts/getAll", async (data, thunkApi) 
     const response = await axios.get<Post[]>("https://jsonplaceholder.typicode.com/posts?_limit=100");
     return response.data;
   } catch (error: any) {
+    console.log(error);
     const message = error.message;
     return thunkApi.rejectWithValue(message);
   }
