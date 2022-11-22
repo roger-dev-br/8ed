@@ -23,9 +23,11 @@ const slice = createSlice({
   },
 });
 
+// ACTIONS
 // exportei ações para alterar o estado
 export const { incrementar, diminuir, zerar } = slice.actions;
 
+// SELECTORS
 // exportar a leitura do estado
 export const getContador = (state: RootState) => state.contador;
 export const getContadorDobro = (state: RootState) => state.contador * 2;
