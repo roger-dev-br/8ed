@@ -1,4 +1,4 @@
-import { Animal } from "./classes";
+import { Animal, Casa } from "./classes";
 
 const cachorro = new Animal("Cachorro");
 cachorro.voa = false;
@@ -21,3 +21,9 @@ aguia.voa = true;
 aguia.patas = 2;
 console.log(aguia);
 aguia.voar();
+
+const casaRoger = new Casa(5, 7, 7);
+casaRoger.toString();
+
+const casaAndre = new Casa(10, 15, 11);
+casaAndre.toString();
