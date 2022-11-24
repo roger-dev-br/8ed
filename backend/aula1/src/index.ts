@@ -27,3 +27,4 @@ casaRoger.toString();
 
 const casaAndre = new Casa(10, 15, 11);
 casaAndre.toString();
+casaAndre.depositar(500);
