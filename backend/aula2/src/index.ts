@@ -5,6 +5,7 @@ papagaio.emitirSom();
 papagaio.autonomiaDeVoo = 2;
 
 const jacare = new Reptil("Reptil", 4, "Jacare");
+jacare.nascer();
 jacare.quilosDeCarnePorDia = 3;
 jacare.emitirSom();
 
