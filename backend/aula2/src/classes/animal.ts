@@ -4,4 +4,8 @@ export abstract class Animal {
   emitirSom() {
     console.log("Sem Som");
   }
+
+  imprimirNome(): string {
+    return this.nome;
+  }
 }
