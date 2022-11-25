@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts"
+    "dev": "ts-node-dev --respawn --transpile-only ./src/index.ts",
+    "dev:pessoas":  "ts-node-dev --respawn --transpile-only ./src/pessoas.ts",
+    "dev:contas": "ts-node-dev --respawn --transpile-only ./src/contas.ts"
   },
   "keywords": [],
   "author": "",
