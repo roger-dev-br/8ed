@@ -6,6 +6,7 @@ export abstract class Conta {
     console.log("Saldo Anterior: ", this.saldo);
     console.log("Valor Depositado: ", num);
 
+    // Aqui eu aumento o Saldo
     this.saldo += num;
 
     console.log("Novo Saldo: ", this.saldo);
@@ -15,10 +16,11 @@ export abstract class Conta {
   }
 
   sacar(num: number): number {
-    console.log("Deposito -------------------");
+    console.log("Saque ---------------------");
     console.log("Saldo Anterior: ", this.saldo);
-    console.log("Valor Depositado: ", num);
+    console.log("Valor Sacado: ", num);
 
+    // aqui eu baixo o saldo
     this.saldo -= num;
 
     console.log("Novo Saldo: ", this.saldo);
