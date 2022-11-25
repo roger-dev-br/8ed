@@ -13,3 +13,9 @@ export class ContaNormal extends Conta {
     return super.sacar(num);
   }
 }
+
+// Tela Cliente - Exclui o Cliente
+// cliente.remove();
+
+// Tela de Serasa
+// cliente.remove();
