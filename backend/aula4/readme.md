@@ -30,3 +30,8 @@
 * Utilizando **reduce** imprima na tela a soma da idade de todas as mulheres.
 
 * Utilizando **reduce** imprima na tela a soma da idade de todas as mulheres com idade entre 30 e 45 anos.
+
+* Utilizando **map** imprimir a listagem de usuários com idades entre 14 e 40 anos, contendo apenas os campos
+    * name
+    * age
+    * username
