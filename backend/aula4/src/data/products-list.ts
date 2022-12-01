@@ -1,4 +1,4 @@
-const productsList = [
+export const productsList = [
   {
     id: 1,
     description: "Limão",
@@ -70,5 +70,3 @@ const productsList = [
     sale: true,
   },
 ];
-
-export default productsList;

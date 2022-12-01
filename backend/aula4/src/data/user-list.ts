@@ -1,4 +1,4 @@
-const usersList = [
+export const usersList = [
   {
     name: "Ediane Araújo",
     picture: {
@@ -1000,5 +1000,3 @@ const usersList = [
     },
   },
 ];
-
-export default usersList;
