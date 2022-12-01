@@ -8,7 +8,7 @@
     * age
     * gender
 
-* Utilizando o **mapp** imprimir a listagem de usuarios contendo os campos
+* Utilizando o **map** imprimir a listagem de usuarios contendo os campos
     * name 
     * username
     * Idoso ( quando idade for >= 60 anos)
