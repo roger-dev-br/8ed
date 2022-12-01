@@ -60,15 +60,15 @@ export const usersList = [
     },
   },
   {
-    name: "Eliseu Castro",
+    name: "Roger Medeiros",
     picture: {
       large: "https://randomuser.me/api/portraits/men/24.jpg",
       medium: "https://randomuser.me/api/portraits/med/men/24.jpg",
       thumbnail: "https://randomuser.me/api/portraits/thumb/men/24.jpg",
     },
-    age: 48,
+    age: 41,
     gender: "male",
-    email: "eliseu.castro@example.com",
+    email: "mentor04@growdev.com.br",
     login: {
       uuid: "afd65cb0-a158-45a2-a052-8a45e2dd020f",
       username: "whitewolf784",
