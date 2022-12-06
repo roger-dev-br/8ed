@@ -47,8 +47,30 @@ const ex4 = usersList.filter((f) => f.gender === "female" && f.age > 50);
 console.table(ex4);
 
 const eu = usersList.find((f) => f.name === "Roger Medeiros");
-console.log({
-  name: eu?.name,
-  idade: eu?.age,
-  genero: eu?.gender,
-});
+// console.log({
+//   name: eu?.name,
+//   idade: eu?.age,
+//   genero: eu?.gender,
+// });
+
+/*
+ * Utilizando **map** imprimir a listagem de usuários com idades
+ * entre 14 e 40 anos, contendo apenas os campos
+ * name
+ * age
+ * username
+ */
+const resultado = usersList
+  .filter((m) => temIdadeParaTrabalhar(m.age) && m.gender === "female")
+  .map((m) => {
+    return {
+      name: m.name,
+      age: m.age,
+      username: m.login.username,
+    };
+  });
+console.table(resultado);
+
+function temIdadeParaTrabalhar(age: number): boolean {
+  return age >= 14 && age <= 40;
+}
