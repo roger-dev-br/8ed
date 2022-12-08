@@ -7,11 +7,14 @@ const Cadastro: React.FC = () => {
   const [nome, setNome] = useState("");
   const [observacao, setObservacao] = useState("");
 
+
+
+
   async function salvar() {
-    const resposta = await axios.post('http://localhost:3000/pet', 
+    const resposta = await axios.post('http://localhost:3000/pets', 
     {
-      nome,
-      observacao
+      nome: nome,
+      observacao: observacao,
     });
     console.log(resposta.data);
   }

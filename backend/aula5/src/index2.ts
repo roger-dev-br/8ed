@@ -59,3 +59,23 @@ server.get("/posts/:codigo", (req: Request, res: Response) => {
   // processa a requisiçao e devolve uma resposta
   res.send(`Requisitaram o post ${params.codigo}`);
 });
+
+server.get("/users", (req: Request, res: Response) => {
+  // eu processo a requisição
+  // console.log(req.query.nome);
+  // console.log(req.query.order);
+  const { nome, order } = req.query;
+  console.log(nome);
+  console.log(order);
+
+  for (const par in req.query) {
+    console.log(par);
+  }
+
+  if (!nome) {
+    mensagem: "Nome obrigatório", res.status(400).json({});
+    return;
+  }
+
+  res.json({ ok: true });
+});
