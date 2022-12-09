@@ -98,3 +98,41 @@ server.get("/pets/:codigo", (req: Request, res: Response) => {
     data: pet,
   } as ResponstaPadrao);
 });
+
+server.delete("/pets/:codigo", (req: Request, res: Response) => {
+  const { codigo } = req.params;
+  const indice = pets.findIndex((f) => f.codigo === Number(codigo));
+
+  if (indice === -1) {
+    return res.status(404).json({
+      sucesso: false,
+      mensagem: "Usuário não encontrado",
+    } as ResponstaPadrao);
+  }
+
+  pets.splice(indice, 1);
+
+  res.status(200).json({
+    sucesso: true,
+    mensagem: "Usuário removido",
+  } as ResponstaPadrao);
+});
+
+server.put("/pets/:codigo", (req: Request, res: Response) => {
+  const { codigo } = req.params;
+  const { observacao } = req.body;
+
+  const pet = pets.find((f) => f.codigo === Number(codigo));
+  if (!pet) {
+    return res.status(404).json({
+      sucesso: false,
+      mensagem: "Usuário não encontrado",
+    } as ResponstaPadrao);
+  }
+
+  pet.observacao = observacao;
+  res.status(200).json({
+    sucesso: true,
+    data: pet,
+  } as ResponstaPadrao);
+});

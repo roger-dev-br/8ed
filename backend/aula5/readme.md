@@ -23,3 +23,6 @@ npm install cors
 
 NGINX -> Profissional para Linux / Windows / MAC
 IIS -> Profissional para Windows
+
+
+ELECTRON -> lib que transforma o app JS em aplicação
