@@ -72,10 +72,5 @@ server.get("/users", (req: Request, res: Response) => {
     console.log(par);
   }
 
-  if (!nome) {
-    mensagem: "Nome obrigatório", res.status(400).json({});
-    return;
-  }
-
   res.json({ ok: true });
 });
