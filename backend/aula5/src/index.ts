@@ -89,7 +89,7 @@ server.get("/pets/:codigo", (req: Request, res: Response) => {
   if (!pet) {
     return res.status(404).json({
       sucesso: false,
-      mensagem: "Usuário não encontrado",
+      mensagem: "Pet não encontrado",
     } as ResponstaPadrao);
   }
 
@@ -106,7 +106,7 @@ server.delete("/pets/:codigo", (req: Request, res: Response) => {
   if (indice === -1) {
     return res.status(404).json({
       sucesso: false,
-      mensagem: "Usuário não encontrado",
+      mensagem: "Pet não encontrado",
     } as ResponstaPadrao);
   }
 
@@ -114,7 +114,7 @@ server.delete("/pets/:codigo", (req: Request, res: Response) => {
 
   res.status(200).json({
     sucesso: true,
-    mensagem: "Usuário removido",
+    mensagem: "Pet removido",
   } as ResponstaPadrao);
 });
 
@@ -126,7 +126,7 @@ server.put("/pets/:codigo", (req: Request, res: Response) => {
   if (!pet) {
     return res.status(404).json({
       sucesso: false,
-      mensagem: "Usuário não encontrado",
+      mensagem: "Pet não encontrado",
     } as ResponstaPadrao);
   }
 
