@@ -39,7 +39,7 @@ server.post("/pets", (req: Request, res: Response) => {
 
   // Validações SEMPRE!!!
   if (!nome) {
-    res.status(400).json({
+    return res.status(400).json({
       sucesso: false,
       mensagem: "Nome não informado",
       data: null,
@@ -136,3 +136,7 @@ server.put("/pets/:codigo", (req: Request, res: Response) => {
     data: pet,
   } as ResponstaPadrao);
 });
+
+// server.post("/growdever") => inclui;
+
+// server.post("/skill/:growdever") => inclui;
