@@ -6,6 +6,7 @@ const AppRoutes: React.FC = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Listagem />}></Route>
+                <Route path="/pets/:id" element={<Listagem />}></Route>
             </Routes>
         </BrowserRouter>
     );
