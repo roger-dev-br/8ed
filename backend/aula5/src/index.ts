@@ -10,7 +10,7 @@ server.use(cors());
 server.use(express.json());
 
 // escuto uma porta e o express responde nela
-server.listen(3000, () => {
+server.listen(3001, () => {
   console.log("Servidor OK");
 });
 
