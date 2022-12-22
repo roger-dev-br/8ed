@@ -113,7 +113,21 @@ server.post("/pets", (req: Request, res: Response) => {
 server.use(logAcesso);
 
 server.get("/pets", (req: Request, res: Response) => {
-  const { filtro } = req.query;
+  const { filtro, type } = req.query;
+
+  // Somas baseadas no total
+
+  // undefined
+
+  // O que retornar
+  const retornar = pets.filter(
+    (f) =>
+      // undefined
+      (f.nome === filtro || !filtro) &&
+      // undefined
+      (f.observacao == type || !type)
+  );
+
   if (filtro) {
     return res.json({
       sucesso: true,
@@ -123,7 +137,7 @@ server.get("/pets", (req: Request, res: Response) => {
 
   res.json({
     sucesso: true,
-    data: pets,
+    data: retornar,
   } as ResponstaPadrao);
 });
 
