@@ -1,9 +1,12 @@
 import { Express } from "express";
-import { GrowdeverController } from "./controllers/growdever.controller";
+import { GrowdeverController } from "./controllers/growdever-controller";
 
 export default (app: Express) => {
-  app.get("/", (request, response) => response.send("ESTÁ FUNCIONANDO"));
-
   const growdeverController = new GrowdeverController();
-  app.get("/growdevers/:id", growdeverController.getById);
+
+  app.get("/growdevers", growdeverController.obtemTodosGrowdevers);
+  app.get("/growdevers/:id", growdeverController.obtemPorCodigo);
+  app.post("/growdevers", growdeverController.criarGrowdever);
+  app.put("/growdevers/:id", growdeverController.atualizarGrowdever);
+  app.delete("/growdevers/:id", growdeverController.removerGrowdever);
 };

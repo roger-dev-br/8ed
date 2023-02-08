@@ -1,6 +1,6 @@
 export class Growdever {
-  readonly codigo?: number;
-  readonly nome: string;
+  codigo?: number;
+  nome: string;
 
   constructor(nome: string, codigo?: number) {
     this.codigo = codigo;
@@ -13,8 +13,8 @@ export class Growdever {
 
   toJson() {
     return {
-      codigo: this.codigo,
-      nome: this.nome,
+      id: this.codigo,
+      name: this.nome,
     };
   }
 }
