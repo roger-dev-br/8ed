@@ -1,7 +1,7 @@
 import { Pool } from "pg";
 
 const pool = new Pool({
-  connectionString: "postgres://xdjcbxnw:pOKyMMHORCfBXdfztNYr1G_xg4Huy473@babar.db.elephantsql.com/xdjcbxn",
+  connectionString: "postgres://xdjcbxnw:pOKyMMHORCfBXdfztNYr1G_xg4Huy473@babar.db.elephantsql.com/xdjcbxnw",
 });
 
 // Uma forma de rodar comandos nesta conexão
