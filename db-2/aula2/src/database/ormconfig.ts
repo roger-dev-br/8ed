@@ -10,7 +10,8 @@ const config: DataSourceOptions = {
   // password: 'testesteste',
   // database: 'growdevers',
   synchronize: false,
-  logging: false,
+  logging: true,
+  logger: "file",
   ssl: {
     rejectUnauthorized: false,
   },

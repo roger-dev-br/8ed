@@ -18,17 +18,24 @@ export class GrowdeverRepository {
 
   // consultar todos os growdevers
   async obterTodosGrowdevers(): Promise<Growdever[]> {
-    const result = await db.query("select * from growdevers order by nome");
+    const result: Growdever[] = await pgHelper.client.query("select * from growdevers order by nome");
 
-    return result.rows.map((row) => Growdever.create(row.nome, Number(row.codigo)));
+    return result.map((row) => Growdever.create(row.nome, row.codigo));
   }
 
-  async criarGrowdever(growdever: Growdever): Promise<void> {
-    await db.query("insert into growdevers (nome) values ($1)", [growdever.nome]);
+  async criarGrowdever(growdever: Growdever): Promise<Growdever> {
+    const result = await pgHelper.client.query("insert into growdevers (nome) values ($1) returning *", [
+      growdever.nome,
+    ]);
+
+    return Growdever.create(result[0].nome, result[0].codigo);
   }
 
   async atualizarGrowdever(growdever: Growdever): Promise<void> {
-    await db.query("update growdevers set nome = $1 where codigo = $2", [growdever.nome, growdever.codigo]);
+    await pgHelper.client.query("update growdevers set nome = $1 where codigo = $2", [
+      growdever.nome,
+      growdever.codigo,
+    ]);
   }
 
   async removerGrowdever(id: number): Promise<void> {
