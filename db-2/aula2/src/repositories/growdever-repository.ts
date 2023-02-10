@@ -1,5 +1,4 @@
 import { Growdever } from "../models/growdever";
-import db from "../db";
 import { pgHelper } from "../database/pg-helper";
 
 export class GrowdeverRepository {
@@ -31,14 +30,18 @@ export class GrowdeverRepository {
     return Growdever.create(result[0].nome, result[0].codigo);
   }
 
-  async atualizarGrowdever(growdever: Growdever): Promise<void> {
-    await pgHelper.client.query("update growdevers set nome = $1 where codigo = $2", [
+  async atualizarGrowdever(growdever: Growdever): Promise<Growdever> {
+    const lista = await pgHelper.client.query("update growdevers set nome = $1 where codigo = $2 returning *", [
       growdever.nome,
       growdever.codigo,
     ]);
+
+    const [result] = lista;
+
+    return Growdever.create(result[0].nome, result[0].codigo);
   }
 
   async removerGrowdever(id: number): Promise<void> {
-    await db.query("delete from growdevers where codigo = $1", [id]);
+    await pgHelper.client.query("delete from growdevers where codigo = $1", [id]);
   }
 }

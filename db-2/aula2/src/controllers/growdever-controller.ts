@@ -40,9 +40,9 @@ export class GrowdeverController {
     const { id } = req.params;
 
     const repository = new GrowdeverRepository();
-    await repository.atualizarGrowdever(Growdever.create(name, Number(id)));
+    const growdever = await repository.atualizarGrowdever(Growdever.create(name, Number(id)));
 
-    return res.status(200).json({});
+    return res.status(200).json(growdever.toJson());
   }
 
   async removerGrowdever(req: Request, res: Response) {
