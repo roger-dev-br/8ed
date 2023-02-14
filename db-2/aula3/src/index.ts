@@ -10,11 +10,9 @@ app.use(cors());
 
 appRoutes(app);
 
-console.log(process.env.PORT);
-
 pgHelper
   .connect()
   .then(() => {
-    app.listen(process.env.PORT || 8080, () => console.log("API RODANDO"));
+    app.listen(process.env.PORT || 8080, () => console.log(`API RODANDO NA PORTA ${process.env.PORT}`));
   })
   .catch((err) => console.log(err));
