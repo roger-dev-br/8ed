@@ -1,5 +1,6 @@
 import "dotenv/config";
 import { DataSourceOptions } from "typeorm";
+import * as path from "path";
 
 const config: DataSourceOptions = {
   type: "postgres",
@@ -9,8 +10,9 @@ const config: DataSourceOptions = {
   // username: 'postgres',
   // password: 'testesteste',
   // database: 'growdevers',
+  entities: ["src/database/entities/**/*", path.resolve(__dirname, "entities/*.entity{.ts,.js}")],
   synchronize: false,
-  logging: true,
+  logging: false,
   logger: "file",
   ssl: {
     rejectUnauthorized: false,
