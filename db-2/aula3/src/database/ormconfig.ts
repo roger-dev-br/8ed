@@ -6,6 +6,7 @@ const config: DataSourceOptions = {
   url: process.env.DATABASE_URL,
   synchronize: false,
   logging: false,
+  entities: ["src/database/entities/**/*"],
   // ssl: {
   //   rejectUnauthorized: false,
   // },
