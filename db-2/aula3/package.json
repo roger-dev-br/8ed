@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "dev:db": "ts-node-dev --transpile-only src/repositories/growdever.ts",
     "dev:debug": "ts-node-dev --inspect=0.0.0.0:9229 --respawn --transpile-only src/index.ts",
     "build": "npx tsc",
     "start": "node dist/index.js"
