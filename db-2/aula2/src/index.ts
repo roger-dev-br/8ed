@@ -3,6 +3,8 @@ import appRoutes from "./routes";
 import { pgHelper } from "./database/pg-helper";
 import cors from "cors";
 
+import "reflect-metadata";
+
 const app = express();
 
 app.use(express.json());
