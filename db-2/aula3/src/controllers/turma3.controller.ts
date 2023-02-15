@@ -21,4 +21,12 @@ export class Turma3Controlller {
 
     return res.json(turma);
   }
+
+  async getAll(req: Request, res: Response) {
+    const repository = new Turma3Repository();
+
+    const turmas = await repository.getAll();
+
+    return res.json(turmas);
+  }
 }

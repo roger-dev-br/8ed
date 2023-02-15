@@ -1,6 +1,7 @@
 // Entidade para representar o Growdever do banco aqui no node
 
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { BeforeInsert, BeforeUpdate, Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from "typeorm";
+import { Profile3Entity } from "./profile.entity";
 
 @Entity({ name: "growdever3" })
 export class Growdever3Entity {
@@ -15,4 +16,20 @@ export class Growdever3Entity {
 
   @Column({ name: "updated_at" })
   updatedAt?: Date;
+
+  @OneToOne(() => Profile3Entity)
+  @JoinColumn({ name: "uuid", referencedColumnName: "uuid" })
+  profile?: Profile3Entity;
+
+  @BeforeInsert()
+  beforeInsert() {
+    this.uuid = new Date().getTime().toString();
+    this.createdAt = new Date();
+  }
+
+  @BeforeUpdate()
+  beforeUpdate() {
+    console.log("Vai Atualizar");
+    this.updatedAt = new Date();
+  }
 }

@@ -14,4 +14,5 @@ export default (app: Express) => {
   const turmaController = new Turma3Controlller();
   app.post("/turma3", turmaController.create);
   app.get("/turma3/:uuid", turmaController.getByUUID);
+  app.get("/turma3", turmaController.getAll);
 };

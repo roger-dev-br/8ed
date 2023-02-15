@@ -28,4 +28,18 @@ export class Turma3Repository {
 
     return turmas;
   }
+
+  async update(uuid: string, name: string, students: number): Promise<void> {
+    const turma = await this.getByUUID(uuid);
+
+    if (!turma) {
+      return;
+    }
+
+    turma.name = name;
+    turma.qtyStudents = students;
+    turma.updatedAt = new Date();
+
+    await turma.save();
+  }
 }

@@ -7,9 +7,7 @@ export class Growdever3Repository {
     // salvar um novo growdever no DB
     const manager = pgHelper.client.manager;
     const novoGrowdever = manager.create(Growdever3Entity, {
-      uuid: new Date().getTime().toString(),
       name,
-      createdAt: new Date(),
     });
 
     return await manager.save(novoGrowdever);
@@ -22,6 +20,7 @@ export class Growdever3Repository {
     // select * from growdever3 where uuid = 'xxx'
     const growdever = await manager.findOne(Growdever3Entity, {
       where: { uuid },
+      relations: ["profile"],
     });
 
     return growdever;
@@ -31,7 +30,9 @@ export class Growdever3Repository {
     const manager = pgHelper.client.manager;
 
     // select * from growdever3
-    const growdevers = await manager.find(Growdever3Entity);
+    const growdevers = await manager.find(Growdever3Entity, {
+      relations: ["profile"],
+    });
 
     return growdevers;
   }
@@ -49,7 +50,6 @@ export class Growdever3Repository {
       { uuid: id },
       {
         name,
-        updatedAt: new Date(),
       }
     );
   }
