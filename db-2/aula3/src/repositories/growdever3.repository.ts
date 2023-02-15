@@ -32,6 +32,10 @@ export class Growdever3Repository {
     // select * from growdever3
     const growdevers = await manager.find(Growdever3Entity, {
       relations: ["profile"],
+      order: {
+        name: "ASC",
+        createdAt: "DESC",
+      },
     });
 
     return growdevers;
