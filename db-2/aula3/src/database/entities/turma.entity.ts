@@ -1,9 +1,7 @@
-// Entidade para representar o Growdever do banco aqui no node
-
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
 
 @Entity({ name: "turma3" })
-export class Turma3Entity {
+export class Turma3Entity extends BaseEntity {
   @PrimaryColumn()
   uuid!: string;
 
@@ -11,7 +9,7 @@ export class Turma3Entity {
   name!: string;
 
   @Column({ name: "students" })
-  students!: number;
+  qtyStudents!: number;
 
   @Column({ name: "created_at" })
   createdAt!: Date;
