@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, PrimaryColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
 
 @Entity({ name: "turma3" })
 export class Turma3Entity extends BaseEntity {
@@ -11,9 +11,9 @@ export class Turma3Entity extends BaseEntity {
   @Column({ name: "students" })
   qtyStudents!: number;
 
-  @Column({ name: "created_at" })
+  @CreateDateColumn({ name: "created_at" })
   createdAt!: Date;
 
-  @Column({ name: "updated_at" })
+  @UpdateDateColumn({ name: "updated_at" })
   updatedAt?: Date;
 }

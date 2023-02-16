@@ -7,7 +7,10 @@
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "dev:debug": "ts-node-dev --inspect=0.0.0.0:9229 --respawn --transpile-only src/index.ts",
     "build": "npx tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "migration:create": "typeorm migration:create src/database/migrations/CreateTable",
+    "migration:show": "typeorm-ts-node-commonjs migration:show -d src/database/typeorm.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/database/typeorm.ts"
   },
   "keywords": [],
   "author": "",
