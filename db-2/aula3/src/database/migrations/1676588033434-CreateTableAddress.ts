@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table, TableForeignKey } from "typeorm";
+import { MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex } from "typeorm";
 
 export class CreateTableAddress1676588033434 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -53,6 +53,15 @@ export class CreateTableAddress1676588033434 implements MigrationInterface {
             onDelete: "CASCADE",
           }),
         ],
+      })
+    );
+
+    await queryRunner.createIndex(
+      "address3",
+      new TableIndex({
+        name: "idx_address_city",
+        columnNames: ["city"],
+        isUnique: false,
       })
     );
   }
