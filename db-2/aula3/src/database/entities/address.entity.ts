@@ -1,4 +1,14 @@
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from "typeorm";
+import {
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryColumn,
+  UpdateDateColumn,
+} from "typeorm";
+import { Growdever3Entity } from "./growdever.entity";
 
 @Entity({ name: "address3" })
 export class AddressEntity extends BaseEntity {
@@ -19,4 +29,8 @@ export class AddressEntity extends BaseEntity {
 
   @UpdateDateColumn({ name: "updated_at" })
   updatedAt?: Date;
+
+  @ManyToOne(() => Growdever3Entity, (fk) => fk.addresses)
+  @JoinColumn({ name: "growdever_uuid", referencedColumnName: "uuid" })
+  growdever!: Growdever3Entity;
 }

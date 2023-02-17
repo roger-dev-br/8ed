@@ -20,7 +20,7 @@ export class Growdever3Repository {
     // select * from growdever3 where uuid = 'xxx'
     const growdever = await manager.findOne(Growdever3Entity, {
       where: { uuid },
-      relations: ["profile"],
+      relations: ["profile", "addresses"],
     });
 
     return growdever;
