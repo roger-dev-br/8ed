@@ -1,3 +1,4 @@
+import { LessThanOrEqual, Like, MoreThanOrEqual, Not } from "typeorm";
 import { Growdever3Entity } from "../database/entities/growdever.entity";
 import { pgHelper } from "../database/pg-helper";
 
@@ -19,7 +20,12 @@ export class Growdever3Repository {
 
     // select * from growdever3 where uuid = 'xxx'
     const growdever = await manager.findOne(Growdever3Entity, {
-      where: { uuid },
+      where: {
+        uuid,
+        addresses: { city: Like("São%") },
+        name: Not("arquivado"),
+        createdAt: LessThanOrEqual(new Date()),
+      },
       relations: ["profile", "addresses"],
     });
 
