@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 @Entity({ name: "growdever4" })
 export class GrowdeverEntity {
   @PrimaryColumn()
-  id!: string;
+  uuid!: string;
 
   @Column()
   nome!: string;
