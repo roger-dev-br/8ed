@@ -9,9 +9,9 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "migration:create": "typeorm migration:create src/app/shared/database/migrations/CreateTable",
-    "migration:show": "typeorm-ts-node-commonjs migration:show -d ./src/database/config/database.config.ts",
-    "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/database/config/database.config.ts",
-    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d ./src/database/config/database.config.ts"
+    "migration:show": "typeorm-ts-node-commonjs migration:show -d ./src/main/config/database.config.ts",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d ./src/main/config/database.config.ts",
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d ./src/main/config/database.config.ts"
   },
   "keywords": [],
   "author": "",
