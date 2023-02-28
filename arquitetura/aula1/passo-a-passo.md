@@ -8,3 +8,8 @@
 4 - Conexao com o banco de dados
 5 - Inicialização do Express ( Server )
 6 - Programar o Index para subir o servidor
+
+# APP
+1- Feature "Growdever"
+    1 - Migrations
+    2 - Entities
