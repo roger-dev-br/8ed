@@ -5,14 +5,14 @@ export class Growdever {
   nome: string;
   email: string;
 
-  constructor(nome: string, email: string) {
+  constructor(nome: string, email: string, uuid?: string) {
     this.nome = nome;
     this.email = email;
-    this.uuid = v4();
+    this.uuid = uuid ?? v4();
   }
 
-  static create(nome: string, email: string): Growdever {
-    return new Growdever(nome, email);
+  static create(nome: string, email: string, uuid?: string): Growdever {
+    return new Growdever(nome, email, uuid);
   }
 
   toJson() {
