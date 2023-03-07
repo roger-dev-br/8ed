@@ -15,4 +15,11 @@ export class HttpHelper {
       message,
     });
   }
+
+  public static badRequest(res: Response, message?: string, code?: number) {
+    return res.status(code ?? 400).send({
+      ok: false,
+      message,
+    });
+  }
 }

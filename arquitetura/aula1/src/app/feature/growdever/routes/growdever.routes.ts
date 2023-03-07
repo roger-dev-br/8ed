@@ -6,4 +6,6 @@ const growdeverRoutes = Router();
 
 growdeverRoutes.post("/", [createGrowdeverValidator], new GrowdeverController().create);
 
+growdeverRoutes.put(":id", [], new GrowdeverController().update);
+
 export { growdeverRoutes };
