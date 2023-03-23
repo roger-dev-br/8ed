@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "f8332a20-6223-463a-b3be-c4e0a84bfcc3",
+		"name": "Growdevers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "First request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/teste",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"teste"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all growdevers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonObject = JSON.parse(responseBody);\r",
+							"console.log(jsonObject);\r",
+							"pm.environment.set(\"token\", jsonObject.data[0].id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/growdever",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever"
+					],
+					"query": [
+						{
+							"key": "nome",
+							"value": "é",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all growdever's skills",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(`${pm.environment.get(\"baseUrl\")}/growdever`, function (err, response) {\r",
+							"    try {\r",
+							"        pm.environment.set(\"growdever-id\", response.json().data[0]?.id);\r",
+							"    } catch {\r",
+							"        console.log(\"error\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/growdever/{{growdever-id}}/skills",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever",
+						"{{growdever-id}}",
+						"skills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find growdever by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(`${pm.environment.get(\"baseUrl\")}/growdever`, function (err, response) {\r",
+							"    try {\r",
+							"        pm.environment.set(\"growdever-id\", response.json().data[0]?.id);\r",
+							"    } catch {\r",
+							"        console.log(\"error\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/growdever/{{growdever-id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever",
+						"{{growdever-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create growdever",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Gumercindo\",\r\n    \"cpf\": 98987,\r\n    \"idade\": 60,\r\n    \"skills\": [\r\n        \"typescript\",\r\n        \"csharp\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/growdever",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create growdever's skill",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(`${pm.environment.get(\"baseUrl\")}/growdever`, function (err, response) {\r",
+							"    try {\r",
+							"        pm.environment.set(\"growdever-id\", response.json().data[0]?.id);\r",
+							"    } catch {\r",
+							"        console.log(\"error\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"skill\": \"redis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/growdever/{{growdever-id}}/skills",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever",
+						"{{growdever-id}}",
+						"skills"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update growdever",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(`${pm.environment.get(\"baseUrl\")}/growdever`, function (err, response) {\r",
+							"    try {\r",
+							"        pm.environment.set(\"growdever-id\", response.json().data[0]?.id);\r",
+							"    } catch {\r",
+							"        console.log(\"error\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idade\": 107\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/growdever/{{growdever-id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever",
+						"{{growdever-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete growdever",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(`${pm.environment.get(\"baseUrl\")}/growdever`, function (err, response) {\r",
+							"    try {\r",
+							"        pm.environment.set(\"growdever-id\", response.json().data[0]?.id);\r",
+							"    } catch {\r",
+							"        console.log(\"error\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/growdever/{{growdever-id}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever",
+						"{{growdever-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete growdever's skill",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.sendRequest(`${pm.environment.get(\"baseUrl\")}/growdever`, function (err, response) {\r",
+							"    try {\r",
+							"        pm.environment.set(\"growdever-id\", response.json().data[0]?.id);\r",
+							"    } catch {\r",
+							"        console.log(\"error\");\r",
+							"    }\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/growdever/{{growdever-id}}/skills/java",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"growdever",
+						"{{growdever-id}}",
+						"skills",
+						"java"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
