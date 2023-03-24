@@ -5,6 +5,9 @@ import { CacheRepository } from "../../../../src/app/shared/database/repositorie
 import { Growdever } from "../../../../src/app/models/growdever.model";
 
 describe("List growdevers usecase test", () => {
+  // crio um novo obj growdever
+  const growdever = new Growdever("PADRAO", 1, 12, []);
+
   beforeAll(async () => {
     await DatabaseConnection.connect();
     await RedisConnection.connect();
@@ -18,9 +21,6 @@ describe("List growdevers usecase test", () => {
   beforeEach(() => {
     // limpo os mocks anteriores
     jest.clearAllMocks();
-
-    // crio um novo obj growdever
-    const growdever = new Growdever("PADRAO", 1, 12, []);
     // simulo para próximas chamadas ao "list", para devolver uma lista com o meu growdever
     jest.spyOn(GrowdeverRepository.prototype, "list").mockResolvedValue([growdever]);
   });
@@ -57,5 +57,17 @@ describe("List growdevers usecase test", () => {
     const result = await sut.execute();
     expect(result).toBeDefined();
     expect(result.length).toBe(0);
+  });
+
+  test("Deveria retornar uma lista do cache quando não existirem growdevers", async () => {
+    const { sut } = makeSut();
+    jest.spyOn(GrowdeverRepository.prototype, "list").mockResolvedValueOnce([]);
+    jest.spyOn(CacheRepository.prototype, "get").mockResolvedValue([growdever]);
+    jest.spyOn(CacheRepository.prototype, "set").mockResolvedValue();
+
+    const result = await sut.execute();
+    expect(result).toBeDefined();
+    expect(result.length).toBeGreaterThan(0);
+    expect(result[0].nome).toBe("PADRAO");
   });
 });
