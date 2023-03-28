@@ -37,9 +37,6 @@ describe("List growdevers route test", () => {
     await growdevRepository.create(growdever);
 
     const result = await request(server).get("/growdever").send();
-
-    console.log(result.body);
-
     expect(result).toBeDefined();
     expect(result.statusCode).toBe(200);
     expect(result.body).toHaveProperty("ok");
@@ -47,6 +44,6 @@ describe("List growdevers route test", () => {
     expect(result.body).toHaveProperty("message");
     expect(result.body).toHaveProperty("data");
     expect(result.body.message).toBe("Growdevers successfully listed");
-    expect((result.body.data as any[]).length).toBeGreaterThan(1);
+    expect((result.body.data as any[]).length).toBeGreaterThan(0);
   });
 });

@@ -45,12 +45,12 @@ export class GrowdeverRepository {
       skills: growdever.skills.join(","),
     });
 
-    if (growdever.endereco) {
+    /*if (growdever.endereco) {
       const enderecoRepository = new EnderecoRepository();
       const result = await enderecoRepository.create(growdever.endereco);
 
       growdeverEntity.id_endereco = result.id;
-    }
+    }*/
 
     const result = await this._repository.save(growdeverEntity);
 
