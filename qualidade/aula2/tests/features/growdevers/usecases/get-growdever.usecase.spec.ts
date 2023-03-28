@@ -36,7 +36,7 @@ describe("Get growdever usecase test", () => {
 
     expect(result).not.toBeNull();
     expect(result).toHaveProperty("id");
-    expect(result).toHaveProperty("cpf");
+    expect(result).not.toHaveProperty("cpf");
     expect(result!.id).toBe(growdever.id);
   });
 });
