@@ -15,7 +15,7 @@
         "migration:run": "npm run typeorm migration:run -- -d src/main/config/database.config.ts",
         "migration:run:test": "cross-env NODE_ENV=test npm run typeorm migration:run -- -d src/main/config/database.config.ts",
         "migration:create": "npm run typeorm migration:create",
-        "test": "jest --silent --verbose --noStackTrace --runInBand",
+        "test": "cross-env NODE_ENV=test jest --silent --verbose --noStackTrace --runInBand",
         "test:verbose": "jest --verbose --runInBand --detectOpenHandles",
         "test:coverage": "jest --silent --noStackTrace --runInBand --coverage",
         "test:watch": "jest --silent --noStackTrace --runInBand --watchAll",
