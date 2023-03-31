@@ -13,6 +13,15 @@ export class ProjectRepository {
     return this.mapEntityToModel(result);
   }
 
+  public async quantidadeProjetosAtivos(id: string): Promise<number> {
+    return await this._repository.count({
+      where: {
+        idGrowdever: id,
+        ativo: "S",
+      },
+    });
+  }
+
   private mapEntityToModel(result: ProjectEntity): Project {
     return new Project(result.id, result.descricao, result.tecnologia, result.ativo, result.idGrowdever);
   }

@@ -1,30 +1,12 @@
 import { GrowdeverRepository } from "../../../../src/app/features/growdever/repositories/growdever.repository";
 import { CreateGrowdeverUseCase } from "../../../../src/app/features/growdever/usecases/create-growdever.usecase";
+import { GetGrowdeverUseCase } from "../../../../src/app/features/growdever/usecases/get-growdever.usecase";
 import { ProjectRepository } from "../../../../src/app/features/project/repositories/project.repository";
 import { Endereco } from "../../../../src/app/models/endereco.model";
 import { Growdever } from "../../../../src/app/models/growdever.model";
 import { Project } from "../../../../src/app/models/project.model";
 import { DatabaseConnection, RedisConnection } from "../../../../src/main/database";
-
-export interface CreateProjectDTO {
-  descricao: string;
-  tecnologia: string;
-  ativo: string;
-  idGrowdever: string;
-}
-
-export class CreateProjectUseCase {
-  constructor(private repository: ProjectRepository) {}
-
-  public async execute(data: CreateProjectDTO) {
-    // desestruturar o DTO
-    const { descricao, tecnologia, ativo, idGrowdever } = data;
-    // crio o model a partir do DTO
-    const projeto = Project.create(descricao, tecnologia, ativo, idGrowdever);
-    // envio o dto para o Repositório
-    return await this.repository.create(projeto);
-  }
-}
+import { CreateProjectUseCase } from "../../../../src/app/features/project/usecases/create-project.usecase";
 
 describe("Create Project Use Case", () => {
   beforeAll(async () => {
@@ -38,7 +20,7 @@ describe("Create Project Use Case", () => {
   });
 
   const makeSut = () => {
-    return new CreateProjectUseCase(new ProjectRepository());
+    return new CreateProjectUseCase(new ProjectRepository(), new GetGrowdeverUseCase(new GrowdeverRepository()));
   };
 
   const criarGrowdever = () => {
@@ -50,10 +32,16 @@ describe("Create Project Use Case", () => {
 
     const growdever = criarGrowdever();
 
+    // simular que o create growdever teve sucesso
     jest.spyOn(CreateGrowdeverUseCase.prototype, "execute").mockResolvedValue(growdever);
+
+    // simular que o create do projeto teve sucesso
     jest
       .spyOn(ProjectRepository.prototype, "create")
       .mockResolvedValue(new Project("1", "PADRAO", "NODE", "S", growdever.id));
+
+    // simular que no get Growdever retornou um objeto
+    jest.spyOn(GetGrowdeverUseCase.prototype, "execute").mockResolvedValue(growdever);
 
     const result = await sut.execute({
       descricao: "Projeto Teste",
@@ -61,5 +49,45 @@ describe("Create Project Use Case", () => {
       ativo: "S",
       idGrowdever: growdever.id,
     });
+
+    expect(result).toBeDefined();
+    expect(result).toHaveProperty("id");
+  });
+
+  test("Criar um Projeto com um growdever Inválido", async () => {
+    const sut = makeSut();
+
+    // simular que no get Growdever retornou um objeto
+    jest.spyOn(GetGrowdeverUseCase.prototype, "execute").mockResolvedValue(null);
+
+    const result = await sut.execute({
+      descricao: "Projeto Teste",
+      tecnologia: "Node",
+      ativo: "S",
+      idGrowdever: "invalido",
+    });
+
+    expect(result).toEqual(new Error("growdever não encontrado"));
+  });
+
+  test("Não Permitir no maid de 2 projetos em aberto por Growdever", async () => {
+    const sut = makeSut();
+
+    const growdever = criarGrowdever();
+
+    // simular que no get Growdever retornou um objeto
+    jest.spyOn(GetGrowdeverUseCase.prototype, "execute").mockResolvedValue(growdever);
+
+    // simular que existe 3 projetos ativos
+    jest.spyOn(CreateProjectUseCase.prototype, "podeAtivarProjeto").mockResolvedValue(false);
+
+    const result = await sut.execute({
+      descricao: "Projeto Teste",
+      tecnologia: "Node",
+      ativo: "S",
+      idGrowdever: "invalido",
+    });
+
+    expect(result).toEqual(new Error("numero maximo de projetos excedido"));
   });
 });
