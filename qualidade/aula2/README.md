@@ -9,5 +9,5 @@ API de Growdevers
             --> CONTROLLER
                 --> USE CASE
                     --> CACHE
-                    --> REPOSITORY
+                    --> REPOSITORY -> TDD Começa aqui
                         --> POSTGRESQL

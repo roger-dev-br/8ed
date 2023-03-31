@@ -20,7 +20,7 @@ interface CreateEnderecoDTO {
 export class CreateGrowdeverUseCase {
   constructor(private repository: GrowdeverRepository) {}
 
-  public async execute(data: CreateGrowdeverDTO) {
+  public async execute(data: CreateGrowdeverDTO): Promise<any> {
     let endereco = undefined;
 
     if (data.endereco) {
